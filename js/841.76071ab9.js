@@ -1,1 +1,0 @@
-"use strict";(self["webpackChunkalert"]=self["webpackChunkalert"]||[]).push([[841],{6841:(e,s,t)=>{t.r(s),t.d(s,{default:()=>i});var r=t(3673);const a={class:"col-12 row bg-white",style:{height:"100vh"}};function c(e,s,t,c,l,n){return(0,r.wg)(),(0,r.iD)("div",a)}var l=t(5777);class n extends l.w3{}var h=t(4260);const u=(0,h.Z)(n,[["render",c]]),i=u}}]);
