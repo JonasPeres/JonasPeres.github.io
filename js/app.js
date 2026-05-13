@@ -99,7 +99,7 @@ function renderLogos() {
         newImg.src = "assets/logos/logo-jnj.png";
         newImg.alt = "Logo";
         newImg.style.cssText =
-          "max-width: 100%; height: 500px !important; max-height: unset; margin: -25px 0px -130px -10px;";
+          "max-width: 100%; height: 350px !important; max-height: unset; margin: -25px 0px -130px -10px;";
         newImg.onerror = () => {
           box.removeChild(newImg);
           box.classList.add("placeholder");
