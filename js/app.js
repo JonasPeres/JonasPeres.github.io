@@ -99,7 +99,7 @@ function renderLogos() {
         newImg.src = "assets/logos/logo-jnj.png";
         newImg.alt = "Logo";
         newImg.style.cssText =
-          "max-width: 100%; height: 350px !important; max-height: unset; margin: -25px 0px -130px -10px;";
+          "max-width: 100%; height: 250px !important; max-height: unset; margin: -25px 0px -100px -10px;";
         newImg.onerror = () => {
           box.removeChild(newImg);
           box.classList.add("placeholder");
@@ -110,6 +110,10 @@ function renderLogos() {
         const img = document.createElement("img");
         img.src = LOGOS[i];
         img.alt = "Logo";
+        if (i === 0) {
+          img.style =
+            "max-width: 100%; height: 40px !important; max-height: unset;";
+        }
         img.onerror = () => {
           box.removeChild(img);
           box.classList.add("placeholder");

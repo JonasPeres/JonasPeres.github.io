@@ -107,7 +107,7 @@ body {
   height: 100vh;
   height: 100dvh; /* respeita barras dinâmicas em mobile/totem */
   overflow: hidden;
-  padding-bottom: 135px;
+  padding-bottom: 45px;
 }
 #view-portal.active .container,
 #view-lio.active .container {
