@@ -72,8 +72,10 @@ const Views = {
 
     if (name === "laudo") resetLaudo();
     // Sai do portal? Fecha qualquer vídeo aberto.
-    if (name !== "portal" && typeof fecharVideoPortal === "function")
-      fecharVideoPortal();
+    if (name !== "portal") {
+      if (typeof fecharVideoPortal === "function") fecharVideoPortal();
+      if (typeof fecharEnquete === "function") fecharEnquete();
+    }
   },
 };
 
@@ -182,6 +184,53 @@ function bindPortalVideo() {
   if (btn) btn.addEventListener("click", abrirVideoPortal);
 }
 
+/* ============ Modal da Enquete (Google Forms embedado) ============ */
+const URL_ENQUETE = "https://forms.gle/Cge51miHdAJCQ7aK8";
+
+function abrirEnquete() {
+  fecharEnquete();
+  const modal = document.createElement("div");
+  modal.className = "video-modal enquete-modal";
+  modal.id = "enquete-modal";
+  modal.innerHTML = `
+    <button class="video-modal-close" type="button" aria-label="Fechar enquete">×</button>
+    <div class="video-modal-content enquete-modal-content">
+      <iframe id="enquete-iframe"
+              src="${URL_ENQUETE}"
+              title="Enquete BRASCRS"
+              loading="eager"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <a class="enquete-fallback" href="${URL_ENQUETE}" target="_blank" rel="noopener">
+        Não carregou? Abrir em nova aba ↗
+      </a>
+    </div>
+  `;
+  modal.addEventListener("click", (e) => {
+    if (
+      e.target === modal ||
+      e.target.classList.contains("video-modal-close")
+    ) {
+      fecharEnquete();
+    }
+  });
+  document.body.appendChild(modal);
+  document.body.style.overflow = "hidden";
+}
+
+function fecharEnquete() {
+  const m = document.getElementById("enquete-modal");
+  if (!m) return;
+  const f = m.querySelector("iframe");
+  if (f) f.src = "about:blank"; // libera para evitar bg activity
+  m.remove();
+  document.body.style.overflow = "";
+}
+
+function bindPortalEnquete() {
+  const btn = document.getElementById("btn-portal-enquete");
+  if (btn) btn.addEventListener("click", abrirEnquete);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // 4 células de banner (topo-esq/dir, rodapé-esq/dir)
   initCarousel(
@@ -209,6 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderExamesGrid();
   bindActions();
   bindPortalVideo();
+  bindPortalEnquete();
 
   // Pré-carrega iframes assim que o navegador estiver ocioso
   if ("requestIdleCallback" in window) {

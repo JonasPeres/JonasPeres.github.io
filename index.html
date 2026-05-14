@@ -147,28 +147,57 @@
       <div class="container">
         <div class="portal-topbar">
           <button class="btn-home" data-action="home">← voltar</button>
-          <button
-            class="portal-logo-btn"
-            type="button"
-            id="btn-portal-video"
-            title="Toque para assistir ao vídeo Conecta 360"
-            aria-label="Reproduzir vídeo do BRASCRS Conecta 360"
-          >
-            <img
-              src="assets/portal/brascrs-conecta360.png"
-              alt="BRASCRS Conecta 360"
-            />
-            <span class="portal-logo-play" aria-hidden="true">
-              <svg
-                viewBox="0 0 24 24"
-                width="14"
-                height="14"
-                fill="currentColor"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </span>
-          </button>
+          <div class="portal-topbar-center">
+            <button
+              class="portal-logo-btn"
+              type="button"
+              id="btn-portal-video"
+              title="Toque para assistir ao vídeo Conecta 360"
+              aria-label="Reproduzir vídeo do BRASCRS Conecta 360"
+            >
+              <img
+                src="assets/portal/brascrs-conecta360.png"
+                alt="BRASCRS Conecta 360"
+              />
+              <span class="portal-logo-play" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="14"
+                  height="14"
+                  fill="currentColor"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+            </button>
+            <button
+              class="portal-enquete-btn"
+              type="button"
+              id="btn-portal-enquete"
+              title="Responda à enquete e participe"
+              aria-label="Abrir enquete"
+            >
+              <span class="portal-enquete-ico" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="8" y="3" width="8" height="3" rx="1" />
+                  <path
+                    d="M16 4.5h2a2 2 0 0 1 2 2V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2h2"
+                  />
+                  <path d="M9 12h6M9 16h4" />
+                </svg>
+              </span>
+              <span>Enquete</span>
+            </button>
+          </div>
           <span class="portal-topbar-spacer" aria-hidden="true"></span>
         </div>
         <div class="iframe-wrap">
