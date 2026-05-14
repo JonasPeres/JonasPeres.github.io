@@ -231,6 +231,46 @@ function bindPortalEnquete() {
   if (btn) btn.addEventListener("click", abrirEnquete);
 }
 
+/* ============ Botão de tela cheia (Fullscreen API) ============ */
+
+function _fsElement() {
+  return (
+    document.fullscreenElement ||
+    document.webkitFullscreenElement ||
+    document.msFullscreenElement
+  );
+}
+
+function toggleFullscreen() {
+  const doc = document;
+  const el = doc.documentElement;
+  if (_fsElement()) {
+    const exit =
+      doc.exitFullscreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+    if (exit) exit.call(doc);
+  } else {
+    const req =
+      el.requestFullscreen ||
+      el.webkitRequestFullscreen ||
+      el.msRequestFullscreen;
+    if (req) req.call(el).catch(() => {});
+  }
+}
+
+function updateFullscreenButton() {
+  const btn = document.getElementById("btn-fullscreen");
+  if (btn) btn.classList.toggle("is-fs", !!_fsElement());
+}
+
+function bindFullscreen() {
+  const btn = document.getElementById("btn-fullscreen");
+  if (btn) btn.addEventListener("click", toggleFullscreen);
+  ["fullscreenchange", "webkitfullscreenchange", "msfullscreenchange"].forEach(
+    (ev) => document.addEventListener(ev, updateFullscreenButton),
+  );
+  updateFullscreenButton();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // 4 células de banner (topo-esq/dir, rodapé-esq/dir)
   initCarousel(
@@ -259,6 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
   bindActions();
   bindPortalVideo();
   bindPortalEnquete();
+  bindFullscreen();
 
   // Pré-carrega iframes assim que o navegador estiver ocioso
   if ("requestIdleCallback" in window) {
