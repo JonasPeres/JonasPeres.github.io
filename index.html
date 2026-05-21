@@ -14,7 +14,7 @@
 
   <!-- HERO -->
   <header class="hero" id="top">
-    <div class="hero__bg" aria-hidden="true"></div>
+    <img class="hero__bg" src="assets/fotos/foto-2.jpeg" alt="" aria-hidden="true" fetchpriority="high" />
     <div class="hero__overlay" aria-hidden="true"></div>
     <canvas id="petals" class="petals" aria-hidden="true"></canvas>
 
@@ -92,13 +92,16 @@
           </a>
         </div>
 
-        <div class="ceremony__map">
-          <iframe
-            title="Mapa do Spazzio Simone Susca"
-            src="https://www.google.com/maps?q=Spazzio+Simone+Susca&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+        <div class="ceremony__visual">
+          <img src="assets/fotos/foto-6.jpeg" alt="Ilustração em aquarela da capela" loading="lazy" />
+          <div class="ceremony__map">
+            <iframe
+              title="Mapa do Spazzio Simone Susca"
+              src="https://maps.google.com/maps?q=Spazzio%20Simone%20Susca&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -128,22 +131,21 @@
   </section>
 
   <!-- GALERIA -->
-  <section class="gallery section">
+  <section class="gallery section section--cream">
     <div class="container reveal">
       <p class="eyebrow">Galeria</p>
       <h2 class="section-title">Nós dois</h2>
 
       <div class="carousel" id="carousel">
-        <button class="carousel__nav carousel__nav--prev" aria-label="Anterior">&#10094;</button>
+        <button class="carousel__nav carousel__nav--prev" aria-label="Anterior" type="button">&#10094;</button>
         <div class="carousel__track" id="carousel-track">
           <figure class="carousel__slide"><img src="assets/fotos/foto-1.jpeg" alt="Rebeca e Pedro" loading="lazy"></figure>
           <figure class="carousel__slide"><img src="assets/fotos/foto-2.jpeg" alt="Rebeca e Pedro" loading="lazy"></figure>
           <figure class="carousel__slide"><img src="assets/fotos/foto-3.jpeg" alt="Rebeca e Pedro" loading="lazy"></figure>
           <figure class="carousel__slide"><img src="assets/fotos/foto-4.jpeg" alt="Rebeca e Pedro" loading="lazy"></figure>
           <figure class="carousel__slide"><img src="assets/fotos/foto-5.jpeg" alt="Rebeca e Pedro" loading="lazy"></figure>
-          <figure class="carousel__slide"><img src="assets/fotos/foto-6.jpeg" alt="Rebeca e Pedro" loading="lazy"></figure>
         </div>
-        <button class="carousel__nav carousel__nav--next" aria-label="Próxima">&#10095;</button>
+        <button class="carousel__nav carousel__nav--next" aria-label="Próxima" type="button">&#10095;</button>
         <div class="carousel__dots" id="carousel-dots"></div>
       </div>
     </div>
