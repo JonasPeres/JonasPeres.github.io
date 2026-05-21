@@ -97,6 +97,18 @@ a:hover { opacity: .75; }
   text-align: center;
 }
 .lead.light { color: rgba(255,255,255,.95); }
+.lead--tip {
+  margin-top: 18px;
+  font-size: 1rem;
+  font-family: var(--sans);
+  font-style: normal;
+  background: rgba(232, 197, 71, .18);
+  border-left: 3px solid var(--mustard);
+  padding: 14px 22px;
+  border-radius: 8px;
+  text-align: left;
+}
+.lead--tip strong { color: var(--verde-folha); }
 
 .btn {
   display: inline-block;
@@ -380,34 +392,24 @@ a:hover { opacity: .75; }
 .ceremony__info .btn { align-self: flex-start; margin-top: 8px; }
 
 .ceremony__visual {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.ceremony__visual > img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-}
-.ceremony__map {
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  flex: 1;
-  min-height: 240px;
+  box-shadow: var(--shadow-md);
+  background: var(--sage-claro);
+  min-height: 340px;
 }
-.ceremony__map iframe {
-  width: 100%; height: 100%;
-  min-height: 240px;
-  border: 0;
+.ceremony__visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  object-fit: cover;
   display: block;
 }
 @media (max-width: 800px) {
   .ceremony__grid { grid-template-columns: 1fr; gap: 24px; }
   .ceremony__info { padding: 28px; }
-  .ceremony__visual > img { height: 160px; }
+  .ceremony__visual,
+  .ceremony__visual img { min-height: 260px; }
 }
 
 /* ============================================================
