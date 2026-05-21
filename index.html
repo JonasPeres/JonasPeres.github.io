@@ -1,289 +1,220 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Totem BRASCRS / Vöiston</title>
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <!-- ============ HOME ============ -->
-    <section id="view-home" class="view active">
-      <div class="container">
-        <!-- Banner topo: 2 colunas (Vöiston | BRASCRS Conecta 360) -->
-        <div class="banner-row">
-          <div
-            class="banner banner-cell is-clickable"
-            id="banner-tl"
-            data-action="lio"
-            role="button"
-            tabindex="0"
-            aria-label="Abrir Assistente Cálculo LIO"
-          >
-            <div class="banner-track"></div>
-          </div>
-          <div class="banner banner-cell" id="banner-tr">
-            <div class="banner-track"></div>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rebeca & Pedro — 19.09.2026</title>
+  <meta name="description" content="Casamento de Rebeca e Pedro — 19 de setembro de 2026, Spazzio Simone Susca." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <canvas id="petals" class="petals" aria-hidden="true"></canvas>
+
+    <div class="hero__content">
+      <div class="monogram" aria-hidden="true">
+        <svg viewBox="0 0 240 240" class="monogram__leaf monogram__leaf--left">
+          <path d="M20 220 Q40 120 120 60 Q70 130 60 220" fill="none" stroke="currentColor" stroke-width="1.2"/>
+          <circle cx="50" cy="180" r="3" fill="currentColor"/>
+          <circle cx="70" cy="150" r="3" fill="currentColor"/>
+          <circle cx="90" cy="120" r="3" fill="currentColor"/>
+          <circle cx="110" cy="90" r="3" fill="currentColor"/>
+        </svg>
+        <div class="monogram__box">
+          <span class="monogram__letter">R</span>
+          <span class="monogram__amp">&amp;</span>
+          <span class="monogram__letter">P</span>
         </div>
-
-        <!-- Cards -->
-        <div class="cards">
-          <button class="card" data-action="portal">
-            <div class="card-icon">
-              <img
-                src="assets/icons/icon-portal.svg"
-                alt=""
-                onerror="this.style.display = 'none'"
-              />
-            </div>
-            <div class="card-text">
-              <h2>Novo Portal</h2>
-              <p>Acesse a versão beta do novo portal da BRASCRS.</p>
-            </div>
-          </button>
-
-          <button
-            class="card"
-            style="justify-content: space-between"
-            data-action="lio"
-          >
-            <div style="display: flex; align-items: center; gap: 16px">
-              <div class="card-icon">
-                <img
-                  src="assets/icons/icon-lio.svg"
-                  alt=""
-                  onerror="this.style.display = 'none'"
-                />
-              </div>
-              <div class="card-text">
-                <h2>Assistente Cálculo LIO</h2>
-                <p>
-                  Cálculo de lente intraocular gratuíto para associados BRASCRS.
-                </p>
-                <div style="display: flex; align-items: center">
-                  <img
-                    src="assets/logos/logo-jnj.png"
-                    alt="Johnson & Johnson"
-                    style="
-                      max-width: 100%;
-                      height: 99px;
-                      margin: -25px 0 -30px -10px;
-                    "
-                  />
-                  <img
-                    src="assets/logos/logo-voiston.png"
-                    alt="Vöiston"
-                    style="max-width: 100%; height: 14px"
-                  />
-                </div>
-              </div>
-            </div>
-            <img
-              src="assets/banners/banner_alexa.png"
-              alt="Banner Alexa"
-              style="max-width: 100%; height: 100px; border-radius: 24px"
-            />
-          </button>
-
-          <button class="card" data-action="laudo">
-            <div class="card-icon">
-              <img
-                src="assets/icons/icon-laudo.svg"
-                alt=""
-                onerror="this.style.display = 'none'"
-              />
-            </div>
-            <div class="card-text">
-              <h2>Assistente de Laudo</h2>
-              <p>
-                Assistente de laudo Vöiston para associados BRASCRS em breve.
-              </p>
-              <div style="display: flex; align-items: center">
-                <img
-                  src="assets/logos/logo-jnj.png"
-                  alt="Johnson & Johnson"
-                  style="
-                    max-width: 100%;
-                    height: 99px;
-                    margin: -25px 0 -30px -10px;
-                  "
-                />
-                <img
-                  src="assets/logos/logo-voiston.png"
-                  alt="Vöiston"
-                  style="max-width: 100%; height: 14px"
-                />
-              </div>
-            </div>
-          </button>
-        </div>
-
-        <!-- Banner rodapé: 2 colunas (Vídeo BRASCRS | QR Code) -->
-        <div class="banner-row">
-          <div class="banner banner-cell" id="banner-bl">
-            <div class="banner-track"></div>
-          </div>
-          <div class="banner banner-cell" id="banner-br">
-            <div class="banner-track"></div>
-          </div>
-        </div>
-
-        <!-- Rodapé: disclaimer + divisor + logos -->
-        <footer class="page-footer">
-          <p class="footer-disclaimer">Ambiente de demonstração.</p>
-          <p class="footer-disclaimer">
-            Tempos de processamento e respostas exibidas podem diferir do
-            produto em produção.
-          </p>
-          <hr class="footer-divider" />
-          <div class="logos" id="logos-home"></div>
-        </footer>
+        <svg viewBox="0 0 240 240" class="monogram__leaf monogram__leaf--right">
+          <path d="M220 220 Q200 120 120 60 Q170 130 180 220" fill="none" stroke="currentColor" stroke-width="1.2"/>
+          <circle cx="190" cy="180" r="3" fill="currentColor"/>
+          <circle cx="170" cy="150" r="3" fill="currentColor"/>
+          <circle cx="150" cy="120" r="3" fill="currentColor"/>
+          <circle cx="130" cy="90" r="3" fill="currentColor"/>
+        </svg>
       </div>
-    </section>
 
-    <!-- ============ NOVO PORTAL ============ -->
-    <section id="view-portal" class="view">
-      <div class="container">
-        <div class="portal-topbar">
-          <button class="btn-home" data-action="home">← voltar</button>
-          <div class="portal-topbar-center">
-            <button
-              class="portal-logo-btn"
-              type="button"
-              id="btn-portal-video"
-              title="Toque para assistir ao vídeo Conecta 360"
-              aria-label="Reproduzir vídeo do BRASCRS Conecta 360"
-            >
-              <img
-                src="assets/portal/brascrs-conecta360.png"
-                alt="BRASCRS Conecta 360"
-              />
-              <span class="portal-logo-play" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  width="14"
-                  height="14"
-                  fill="currentColor"
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </span>
-            </button>
-            <button
-              class="portal-enquete-btn"
-              type="button"
-              id="btn-portal-enquete"
-              title="Responda à enquete e participe"
-              aria-label="Abrir enquete"
-            >
-              <span class="portal-enquete-ico" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  width="20"
-                  height="20"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <rect x="8" y="3" width="8" height="3" rx="1" />
-                  <path
-                    d="M16 4.5h2a2 2 0 0 1 2 2V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2h2"
-                  />
-                  <path d="M9 12h6M9 16h4" />
-                </svg>
-              </span>
-              <span>Enquete</span>
-            </button>
+      <h1 class="hero__title">Rebeca <span class="amp">&amp;</span> Pedro</h1>
+      <p class="hero__date">19 . 09 . 2026</p>
+      <p class="hero__sub">Spazzio Simone Susca</p>
+    </div>
+
+    <a href="#contagem" class="hero__scroll" aria-label="Role para baixo">
+      <span></span>
+    </a>
+  </header>
+
+  <!-- COUNTDOWN -->
+  <section class="countdown" id="contagem">
+    <div class="container reveal">
+      <p class="eyebrow">Contagem regressiva</p>
+      <h2 class="section-title light">Faltam para o grande dia</h2>
+      <div class="countdown__grid" id="countdown-grid">
+        <div class="countdown__cell"><strong data-unit="days">--</strong><span>dias</span></div>
+        <div class="countdown__cell"><strong data-unit="hours">--</strong><span>horas</span></div>
+        <div class="countdown__cell"><strong data-unit="minutes">--</strong><span>minutos</span></div>
+        <div class="countdown__cell"><strong data-unit="seconds">--</strong><span>segundos</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERIMÔNIA & FESTA -->
+  <section class="ceremony section">
+    <div class="container reveal">
+      <p class="eyebrow">Cerimônia & Festa</p>
+      <h2 class="section-title">Onde tudo vai acontecer</h2>
+
+      <div class="ceremony__grid">
+        <div class="ceremony__info">
+          <div class="ceremony__row">
+            <svg viewBox="0 0 24 24" class="icon"><path fill="currentColor" d="M7 2h2v2h6V2h2v2h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2V2zm13 8H4v10h16V10z"/></svg>
+            <div>
+              <strong>Sábado, 19 de setembro de 2026</strong>
+              <span>Cerimônia às 16h</span>
+            </div>
           </div>
-          <span class="portal-topbar-spacer" aria-hidden="true"></span>
+          <div class="ceremony__row">
+            <svg viewBox="0 0 24 24" class="icon"><path fill="currentColor" d="M12 2a8 8 0 0 0-8 8c0 5.5 8 12 8 12s8-6.5 8-12a8 8 0 0 0-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+            <div>
+              <strong>Spazzio Simone Susca</strong>
+              <span>São Paulo — SP</span>
+            </div>
+          </div>
+          <a class="btn btn--coral" href="https://maps.app.goo.gl/STTVpd2hYqJtULex5?g_st=aw" target="_blank" rel="noopener">
+            Abrir no Google Maps
+          </a>
         </div>
-        <div class="iframe-wrap">
+
+        <div class="ceremony__map">
           <iframe
-            id="iframe-portal"
-            src="about:blank"
-            allow="fullscreen"
-            referrerpolicy="no-referrer"
+            title="Mapa do Spazzio Simone Susca"
+            src="https://www.google.com/maps?q=Spazzio+Simone+Susca&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-        <div class="logos" id="logos-portal"></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ============ ASSISTENTE LIO ============ -->
-    <section id="view-lio" class="view">
-      <div class="container">
-        <button class="btn-home" data-action="home">← voltar</button>
-        <div class="iframe-wrap">
-          <iframe
-            id="iframe-lio"
-            src="about:blank"
-            allow="fullscreen"
-            referrerpolicy="no-referrer"
-          ></iframe>
+  <!-- DRESS CODE -->
+  <section class="dresscode section section--sage">
+    <div class="container reveal">
+      <p class="eyebrow">Dress code</p>
+      <h2 class="section-title">Vamos celebrar com elegância</h2>
+      <p class="lead">
+        O traje sugerido é <strong>esporte fino</strong>. Pedimos gentilmente que evitem
+        as cores <em>branco</em>, <em>off-white</em> e <em>nude</em>, reservadas à noiva.
+      </p>
+
+      <div class="palette">
+        <p class="palette__label">Inspire-se na nossa paleta:</p>
+        <div class="palette__chips">
+          <span class="chip" style="--c:#4A6A4A" title="Verde escuro"></span>
+          <span class="chip" style="--c:#B8CDB5" title="Sage"></span>
+          <span class="chip" style="--c:#C8388B" title="Magenta"></span>
+          <span class="chip" style="--c:#F19478" title="Coral"></span>
+          <span class="chip" style="--c:#E8C547" title="Mostarda"></span>
         </div>
-        <div class="logos" id="logos-lio"></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ============ ASSISTENTE DE LAUDO ============ -->
-    <section id="view-laudo" class="view">
-      <div class="container">
-        <button class="btn-home" data-action="home">← voltar</button>
+  <!-- GALERIA -->
+  <section class="gallery section">
+    <div class="container reveal">
+      <p class="eyebrow">Galeria</p>
+      <h2 class="section-title">Nós dois</h2>
 
-        <div class="exames-grid" id="exames-grid"></div>
-
-        <div class="laudo-area" id="laudo-area">
-          <div class="laudo-placeholder">
-            <h2>Assistente de Laudo Vöiston</h2>
-            <p>Selecione um exame acima para iniciar a análise.</p>
-          </div>
+      <div class="carousel" id="carousel">
+        <button class="carousel__nav carousel__nav--prev" aria-label="Anterior">&#10094;</button>
+        <div class="carousel__track" id="carousel-track">
+          <figure class="carousel__slide"><img src="assets/fotos/foto-1.jpeg" alt="Rebeca e Pedro" loading="lazy"></figure>
+          <figure class="carousel__slide"><img src="assets/fotos/foto-2.jpeg" alt="Rebeca e Pedro" loading="lazy"></figure>
+          <figure class="carousel__slide"><img src="assets/fotos/foto-3.jpeg" alt="Rebeca e Pedro" loading="lazy"></figure>
+          <figure class="carousel__slide"><img src="assets/fotos/foto-4.jpeg" alt="Rebeca e Pedro" loading="lazy"></figure>
+          <figure class="carousel__slide"><img src="assets/fotos/foto-5.jpeg" alt="Rebeca e Pedro" loading="lazy"></figure>
+          <figure class="carousel__slide"><img src="assets/fotos/foto-6.jpeg" alt="Rebeca e Pedro" loading="lazy"></figure>
         </div>
-
-        <div class="logos" id="logos-laudo"></div>
+        <button class="carousel__nav carousel__nav--next" aria-label="Próxima">&#10095;</button>
+        <div class="carousel__dots" id="carousel-dots"></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Botão flutuante de tela cheia (canto superior direito) -->
-    <button
-      class="fs-toggle"
-      type="button"
-      id="btn-fullscreen"
-      aria-label="Alternar tela cheia"
-      title="Entrar/sair de tela cheia"
-    >
-      <svg
-        class="fs-icon fs-icon-enter"
-        viewBox="0 0 24 24"
-        width="22"
-        height="22"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />
-      </svg>
-      <svg
-        class="fs-icon fs-icon-exit"
-        viewBox="0 0 24 24"
-        width="22"
-        height="22"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" />
-      </svg>
-    </button>
+  <!-- PRESENTES (placeholder) -->
+  <section class="gifts section section--coral">
+    <div class="container reveal">
+      <p class="eyebrow">Lista de presentes</p>
+      <h2 class="section-title light">Em breve</h2>
+      <p class="lead light">
+        Estamos preparando a nossa lista com muito carinho.
+        Em breve, vocês encontrarão aqui todas as opções para nos presentear.
+      </p>
+    </div>
+  </section>
 
-    <script src="js/carousel.js"></script>
-    <script src="js/laudo.js"></script>
-    <script src="js/app.js"></script>
-  </body>
+  <!-- RSVP (placeholder) -->
+  <section class="rsvp section">
+    <div class="container reveal">
+      <p class="eyebrow">Confirmação de presença</p>
+      <h2 class="section-title">Aguarde notícias</h2>
+      <p class="lead">
+        As confirmações serão abertas em breve. Reserve a data e prepare o look —
+        avisaremos por aqui assim que estiver disponível.
+      </p>
+    </div>
+  </section>
+
+  <!-- INFORMAÇÕES IMPORTANTES -->
+  <section class="info section section--sage">
+    <div class="container reveal">
+      <p class="eyebrow">Informações importantes</p>
+      <h2 class="section-title">Tudo o que vocês precisam saber</h2>
+
+      <div class="accordion">
+        <details>
+          <summary>Estacionamento</summary>
+          <p>O Spazzio Simone Susca dispõe de estacionamento. Mais detalhes serão divulgados em breve.</p>
+        </details>
+        <details>
+          <summary>Hospedagem próxima</summary>
+          <p>Em breve compartilharemos sugestões de hotéis e pousadas próximas ao local.</p>
+        </details>
+        <details>
+          <summary>Crianças</summary>
+          <p>Crianças são muito bem-vindas! Em breve traremos mais informações sobre o espaço dedicado.</p>
+        </details>
+        <details>
+          <summary>Presentes em dinheiro / PIX</summary>
+          <p>A chave PIX e os detalhes das cotas serão divulgados junto com a lista de presentes.</p>
+        </details>
+        <details>
+          <summary>Contato</summary>
+          <p>Em caso de dúvidas, entre em contato com a cerimonialista — informações em breve.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__mono">R &amp; P</div>
+      <p>Feito com 💚 para 19 . 09 . 2026</p>
+    </div>
+  </footer>
+
+  <script src="js/countdown.js"></script>
+  <script src="js/carousel.js"></script>
+  <script src="js/petals.js"></script>
+  <script src="js/reveal.js"></script>
+</body>
 </html>

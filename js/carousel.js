@@ -1,86 +1,69 @@
-/**
- * Carrossel simples e reutilizável.
- * Uso: initCarousel(elementoBanner, slides, 5000)
- *
- * `slides` aceita strings (caminho de imagem) ou objetos:
- *   { img, bg, fit, overlay }
- *     - img:     caminho da imagem
- *     - bg:      cor de fundo (ex: "#0A1245") — útil quando o PNG é transparente
- *     - fit:     "cover" (default) | "contain"
- *     - overlay: { img, position }
- *         position: "top-right" | "top-left" | "bottom-right" | "bottom-left"
- *
- * Se a lista vier vazia, mostra um único slide placeholder.
- */
-function initCarousel(banner, slides, intervaloMs) {
-  const track = banner.querySelector('.banner-track');
-  const dots  = banner.querySelector('.banner-dots');     // pode ser null em cells de 1 slide
-  track.innerHTML = '';
-  if (dots) dots.innerHTML = '';
+(function () {
+  const root = document.getElementById('carousel');
+  if (!root) return;
+  const track = document.getElementById('carousel-track');
+  const dotsWrap = document.getElementById('carousel-dots');
+  const prev = root.querySelector('.carousel__nav--prev');
+  const next = root.querySelector('.carousel__nav--next');
+  const slides = Array.from(track.children);
 
-  const lista = (slides && slides.length) ? slides : [null];
+  // Dots
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', `Ir para foto ${i + 1}`);
+    b.addEventListener('click', () => scrollToIndex(i));
+    dotsWrap.appendChild(b);
+  });
+  const dots = Array.from(dotsWrap.children);
 
-  lista.forEach((item, i) => {
-    const slide = document.createElement('div');
-    slide.className = 'banner-slide' + (item ? '' : ' placeholder');
+  function visibleCount() {
+    const w = window.innerWidth;
+    if (w >= 1000) return 3;
+    if (w >= 700) return 2;
+    return 1;
+  }
 
-    if (item) {
-      const conf = typeof item === 'string' ? { img: item } : item;
-      if (conf.bg)  slide.style.backgroundColor = conf.bg;
+  function scrollToIndex(i) {
+    const max = slides.length - visibleCount();
+    const target = Math.max(0, Math.min(i, max));
+    const slide = slides[target];
+    if (!slide) return;
+    track.scrollTo({ left: slide.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+  }
 
-      if (conf.video) {
-        // Vídeo no slide — autoplay mudo + loop (autoplay com som é bloqueado pelo navegador)
-        const v = document.createElement('video');
-        v.src = conf.video;
-        v.autoplay = true;
-        v.loop     = true;
-        v.muted    = true;
-        v.playsInline = true;
-        v.setAttribute('playsinline', '');
-        v.style.objectFit = conf.fit || 'cover';
-        v.className = 'banner-video';
-        slide.appendChild(v);
-      } else if (conf.img) {
-        slide.style.backgroundImage = `url("${conf.img}")`;
-        if (conf.fit) slide.style.backgroundSize = conf.fit;
-      }
+  function currentIndex() {
+    const sl = slides[0];
+    if (!sl) return 0;
+    const slideW = sl.getBoundingClientRect().width + 16;
+    return Math.round(track.scrollLeft / slideW);
+  }
 
-      if (conf.overlay && conf.overlay.img) {
-        const ov = document.createElement('img');
-        ov.src = conf.overlay.img;
-        ov.alt = '';
-        ov.className = 'banner-overlay banner-overlay-' + (conf.overlay.position || 'top-right');
-        slide.appendChild(ov);
-      }
-    }
+  prev.addEventListener('click', () => scrollToIndex(currentIndex() - 1));
+  next.addEventListener('click', () => scrollToIndex(currentIndex() + 1));
 
-    track.appendChild(slide);
-
-    if (lista.length > 1 && dots) {
-      const dot = document.createElement('button');
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => goTo(i));
-      dots.appendChild(dot);
-    }
+  let rafId = null;
+  track.addEventListener('scroll', () => {
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(() => {
+      const idx = currentIndex();
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+    });
   });
 
-  let idx = 0;
-  let timer = null;
+  // initial dot
+  dots[0] && dots[0].classList.add('is-active');
 
-  function goTo(novoIdx) {
-    idx = (novoIdx + lista.length) % lista.length;
-    track.style.transform = `translateX(-${idx * 100}%)`;
-    if (dots) Array.from(dots.children).forEach((d, i) => d.classList.toggle('active', i === idx));
-    reiniciar();
+  // Auto-advance every 6s, pausa quando o mouse está sobre o carrossel
+  let autoplay = setInterval(advance, 6000);
+  function advance() {
+    const max = slides.length - visibleCount();
+    const idx = currentIndex();
+    scrollToIndex(idx >= max ? 0 : idx + 1);
   }
-
-  function proximo() { goTo(idx + 1); }
-
-  function reiniciar() {
-    if (timer) clearInterval(timer);
-    if (slides.length > 1) timer = setInterval(proximo, intervaloMs || 5000);
-  }
-
-  reiniciar();
-  return { goTo, destroy: () => timer && clearInterval(timer) };
-}
+  root.addEventListener('mouseenter', () => clearInterval(autoplay));
+  root.addEventListener('mouseleave', () => autoplay = setInterval(advance, 6000));
+  document.addEventListener('visibilitychange', () => {
+    clearInterval(autoplay);
+    if (!document.hidden) autoplay = setInterval(advance, 6000);
+  });
+})();
